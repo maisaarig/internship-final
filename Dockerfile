@@ -1,4 +1,4 @@
 FROM openjdk:8
-EXPOSE 8080
-ADD target/demo.jar demo.jar
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} demo.jar
 ENTRYPOINT ["java","-jar","/demo.jar"]
