@@ -49,7 +49,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t maisaa/devops-integration .'
+                    bat 'docker build -t maisaa/devops-integration .'
                 }
             }
         }
@@ -57,10 +57,10 @@ pipeline {
             steps{
                 script{
                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u maisaa -p ${dockerhubpwd}'
+                   bat 'docker login -u maisaa -p ${dockerhubpwd}'
 
 }
-                   sh 'docker push maisaa/devops-integration'
+                   bat 'docker push maisaa/devops-integration'
                 }
             }
         }
